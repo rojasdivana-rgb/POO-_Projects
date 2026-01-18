@@ -1,0 +1,174 @@
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                            DIAGRAMA DE CLASES - SISTEMA LAMBORGHINI (actividad1)                                                         ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                    CAPA DE MODELOS (actividad1.model)                                                                   │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                                                                          │
+│  ┌──────────────────────────┐      ┌──────────────────────────┐      ┌─────────────────────────────┐                                  │
+│  │         AUTO             │      │       CLIENTE            │      │         VENTA               │                                  │
+│  ├──────────────────────────┤      ├──────────────────────────┤      ├─────────────────────────────┤                                  │
+│  │ - id: int                │      │ - nombre: String         │      │ - idVenta: int              │                                  │
+│  │ - modelo: String         │      │ - apellido: String       │      │ - cliente: Cliente *        │                                  │
+│  │ - marca: String          │      │ - telefono: String       │      │ - autos: List<Auto> *       │                                  │
+│  │ - precio: double         │      │ - email: String          │      │ - fecha: LocalDateTime *    │                                  │
+│  │ - color: String          │      │ - cedula: String         │      │ - total: double             │                                  │
+│  │ - año: int               │      ├──────────────────────────┤      ├─────────────────────────────┤                                  │
+│  │ - motor: String          │      │ + getNombre(): String    │      │ + getIdVenta(): int         │                                  │
+│  │ - potencia: String       │      │ + getApellido(): String  │      │ + getCliente(): Cliente     │                                  │
+│  │ - velocidadMax: int      │      │ + getNombreCompleto()    │      │ + getAutos(): List<Auto>    │                                  │
+│  │ - descripcion: String    │      │ + getTelefono(): String  │      │ + agregarAuto(Auto): void   │                                  │
+│  ├──────────────────────────┤      │ + getEmail(): String     │      │ + eliminarAuto(int): void   │                                  │
+│  │ + getId(): int           │      └──────────────────────────┘      │ + getFecha(): LocalDateTime │                                  │
+│  │ + getModelo(): String    │                  ▲                     │ + getTotal(): double        │                                  │
+│  │ + getPrecio(): double    │                  │                     └─────────────────────────────┘                                  │
+│  │ + getVelocidadMax(): int │                  │                              ▲                                                       │
+│  │ + toString(): String     │                  └──────────┬──────────────────┘                                                         │
+│  │                          │                             │ registra                                                                    │
+│  └──────────────────────────┘                          (1:1)                                                                            │
+│           ▲                                               │                                                                             │
+│           │ contiene                                     ┌┘                                                                             │
+│          (1:n)                                      (1:n) │                                                                             │
+│           │                                         contiene                                                                            │
+│           └─────────────────────────────────────────────┘                                                                               │
+│                                                                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                        CAPA DE REPOSITORIO (actividad1.repository)                                                                      │
+├──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                                                                          │
+│  ┌────────────────────────────────────────┐      ┌────────────────────────────────────────┐                                           │
+│  │       AutoRepository                   │      │      VentaRepository                   │                                           │
+│  ├────────────────────────────────────────┤      ├────────────────────────────────────────┤                                           │
+│  │ - autos: final List<Auto>              │      │ - ventas: final List<Venta>            │                                           │
+│  ├────────────────────────────────────────┤      │ - contadorVentas: int                  │                                           │
+│  │ + obtenerTodos(): List<Auto>           │      ├────────────────────────────────────────┤                                           │
+│  │ + obtenerPorId(int): Auto              │      │ + guardarVenta(Venta): void            │                                           │
+│  │ + agregarAuto(Auto): void              │      │ + obtenerTodas(): List<Venta>          │                                           │
+│  │ + eliminarAuto(int): void              │      │ + obtenerPorId(int): Venta             │                                           │
+│  │ + obtenerCantidad(): int               │      │ + obtenerCantidad(): int               │                                           │
+│  │ - inicializarCatalogo(): void          │      └────────────────────────────────────────┘                                           │
+│  │                                        │                ▲                                                                           │
+│  └────────────────────────────────────────┘                │                                                                           │
+│              ▲                                              │                                                                           │
+│              └──────────────────┬───────────────────────────┘                                                                            │
+│                                 │ utiliza en CLI                                                                                        │
+│                                 │                                                                                                      │
+└─────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                  │
+┌─────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│              CAPA DE LÓGICA DE NEGOCIO (actividad1.process)                                                                            │
+├─────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                  │                                                                                                    │
+│  ┌──────────────────────────────────────────────┐  ┌──────────────────────────────────────┐                                          │
+│  │      VentaProcess                            │  │  ReporteVentasProcess                │                                          │
+│  │    (actividad1.process.ventas)               │  │ (actividad1.process.reportes)        │                                          │
+│  ├──────────────────────────────────────────────┤  ├──────────────────────────────────────┤                                          │
+│  │ - ventaRepository: final VentaRepository     │  │ (sin atributos)                      │                                          │
+│  │ - ventaActual: Venta                         │  ├──────────────────────────────────────┤                                          │
+│  ├──────────────────────────────────────────────┤  │ + generarTicketVenta(Venta): void    │                                          │
+│  │ + iniciarVenta(Cliente): void                │  │ + mostrarResumenVenta(Venta): void   │                                          │
+│  │ + agregarAutoAVenta(Auto): void              │  │ + generarReporteVentas(List): void   │                                          │
+│  │ + eliminarAutoDeVenta(int): void             │  │                                      │                                          │
+│  │ + obtenerVentaActual(): Venta                │  └──────────────────────────────────────┘                                          │
+│  │ + finalizarVenta(): void                     │           ▲                                                                         │
+│  │ + cancelarVenta(): void                      │           │ utiliza en CLI                                                          │
+│  │                                              │           │                                                                         │
+│  └──────────────────────────────────────────────┘           │                                                                         │
+│                      ▲                                       │                                                                         │
+│                      │ controla en CLI                       │                                                                         │
+│                      │                                       │                                                                         │
+└──────────────────────┼───────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────┘
+                       │                                       │
+┌──────────────────────┼───────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────┐
+│                      │       CAPA DE PRESENTACIÓN (actividad1.ui)      │                                                              │
+├──────────────────────┼───────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────┤
+│                      │                                       │                                                                        │
+│  ┌─────────────────────────────────────────────────────────────────────┐                                                             │
+│  │                          CLI                                        │                                                             │
+│  ├─────────────────────────────────────────────────────────────────────┤                                                             │
+│  │ - scanner: final Scanner                                            │                                                             │
+│  │ - autoRepository: final AutoRepository                              │                                                             │
+│  │ - ventaRepository: final VentaRepository                            │                                                             │
+│  │ - ventaProcess: final VentaProcess                                  │                                                             │
+│  │ - reporteProcess: final ReporteVentasProcess                        │                                                             │
+│  ├─────────────────────────────────────────────────────────────────────┤                                                             │
+│  │ + iniciar(): void                                                   │                                                             │
+│  │ - mostrarMenuPrincipal(): void                                      │                                                             │
+│  │ - procesarNuevaVenta(): void                                        │                                                             │
+│  │ - mostrarCatalogo(): void                                           │                                                             │
+│  │ - mostrarTodasLasVentas(): void                                     │                                                             │
+│  │ - capturarDatosCliente(): Cliente                                   │                                                             │
+│  │ - leerOpcion(): int                                                 │                                                             │
+│  │ - leerNumero(): int                                                 │                                                             │
+│  └─────────────────────────────────────────────────────────────────────┘                                                             │
+│                                                                                                                                        │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                        UTILIDADES Y PUNTO DE ENTRADA                                                                                   │
+├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                                                                        │
+│  ┌──────────────────────────────────┐      ┌──────────────────────────────────┐                                                     │
+│  │     FechaUtil                    │      │         Main                     │                                                     │
+│  │  (actividad1.utils)              │      │      (actividad1)                │                                                     │
+│  ├──────────────────────────────────┤      ├──────────────────────────────────┤                                                     │
+│  │                                  │      │                                  │                                                     │
+│  ├──────────────────────────────────┤      ├──────────────────────────────────┤                                                     │
+│  │ + formatoCompleto(LocalDateTime) │      │ + main(String[]): void           │                                                     │
+│  │ + formatoFecha(LocalDateTime)    │      │                                  │                                                     │
+│  │ + formatoHora(LocalDateTime)     │      └──────────────────────────────────┘                                                     │
+│  │                                  │               ▲                                                                               │
+│  │ (todos static)                   │               │ inicia                                                                         │
+│  │                                  │               │                                                                               │
+│  └──────────────────────────────────┘               │                                                                               │
+│           ▲                                          │                                                                               │
+│           │ formatea en ReporteVentasProcess ────────┘                                                                               │
+│           │                                                                                                                         │
+└───────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+            │
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+LEYENDA DE RELACIONES:
+═══════════════════════
+
+→    Usa/Dependencia
+--●  Agregación (parte de)
+--◇  Composición (contiene)
+1:1  Relación uno a uno
+1:n  Relación uno a muchos
+
+
+ESTRUCTURA DE PACKAGES:
+═══════════════════════
+
+actividad1/
+├── Main.java                          ────► Punto de entrada
+├── model/
+│   ├── Auto.java                      ────► Modelo del vehículo
+│   ├── Cliente.java                   ────► Modelo del cliente
+│   └── Venta.java                     ────► Modelo de la transacción
+├── repository/
+│   ├── AutoRepository.java            ────► Gestiona datos de autos
+│   └── VentaRepository.java           ────► Gestiona datos de ventas
+├── process/
+│   ├── ventas/
+│   │   └── VentaProcess.java          ────► Lógica de negocio de ventas
+│   └── reportes/
+│       └── ReporteVentasProcess.java  ────► Generación de reportes
+├── ui/
+│   └── CLI.java                       ────► Interfaz de usuario
+└── utils/
+    └── FechaUtil.java                 ────► Utilidades de fechas
+
+
+PATRONES DE DISEÑO APLICADOS:
+═════════════════════════════
+
+• Repository Pattern       ────► Abstracción de acceso a datos
+• Service/Process Pattern  ────► Lógica de negocio separada
+• MVC (Model-View-Control)────► Separación de responsabilidades
+• Singleton implícito      ────► Único repositorio por aplicación
