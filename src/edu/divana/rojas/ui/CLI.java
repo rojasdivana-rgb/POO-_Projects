@@ -1,8 +1,5 @@
 package edu.divana.rojas.ui;
 
-import java.util.List;
-import java.util.Scanner;
-
 import edu.divana.rojas.model.Auto;
 import edu.divana.rojas.model.Cliente;
 import edu.divana.rojas.model.Venta;
@@ -10,6 +7,8 @@ import edu.divana.rojas.process.reportes.ReporteVentasProcess;
 import edu.divana.rojas.process.ventas.VentaProcess;
 import edu.divana.rojas.repository.AutoRepository;
 import edu.divana.rojas.repository.VentaRepository;
+import java.util.List;
+import java.util.Scanner;
 
 public class CLI {
     private final Scanner scanner;
