@@ -135,23 +135,35 @@ public class CLI {
 
     private int leerOpcion() {
         try {
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
-            return opcion;
+            if (scanner.hasNextInt()) {
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
+                return opcion;
+            } else if (scanner.hasNextLine()) {
+                scanner.nextLine();
+                return -1;
+            } else {
+                return 4; // Salir si no hay entrada
+            }
         } catch (Exception e) {
-            scanner.nextLine();
-            return -1;
+            return 4; // Salir si hay error
         }
     }
 
     private int leerNumero() {
         try {
-            int numero = scanner.nextInt();
-            scanner.nextLine();
-            return numero;
+            if (scanner.hasNextInt()) {
+                int numero = scanner.nextInt();
+                scanner.nextLine();
+                return numero;
+            } else if (scanner.hasNextLine()) {
+                scanner.nextLine();
+                return -1;
+            } else {
+                return 0;
+            }
         } catch (Exception e) {
-            scanner.nextLine();
-            return -1;
+            return 0;
         }
     }
 }
