@@ -10,13 +10,32 @@ import edu.divana.rojas.repository.VentaRepository;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Interfaz de línea de comandos (CLI) para el sistema de ventas de Lamborghini.
+ * Gestiona la interacción del usuario con el sistema, incluyendo:
+ * - Procesamiento de nuevas ventas
+ * - Visualización de catálogo de vehículos
+ * - Generación de reportes de ventas
+ *
+ * @author Divana Rojas
+ * @version 1.0
+ */
 public class CLI {
+    /** Scanner para leer entrada del usuario */
     private final Scanner scanner;
+    /** Repositorio de vehículos disponibles */
     private final AutoRepository autoRepository;
+    /** Repositorio de ventas realizadas */
     private final VentaRepository ventaRepository;
+    /** Proceso para gestionar ventas */
     private final VentaProcess ventaProcess;
+    /** Proceso para generar reportes de ventas */
     private final ReporteVentasProcess reporteProcess;
 
+    /**
+     * Constructor de la interfaz CLI.
+     * Inicializa los componentes necesarios para la gestión del sistema.
+     */
     public CLI() {
         this.scanner = new Scanner(System.in);
         this.autoRepository = new AutoRepository();
@@ -25,6 +44,10 @@ public class CLI {
         this.reporteProcess = new ReporteVentasProcess();
     }
 
+    /**
+     * Inicia el ciclo principal de la interfaz CLI.
+     * Muestra el menú principal y procesa las opciones del usuario.
+     */
     public void iniciar() {
         boolean salir = false;
         try (scanner) {
@@ -46,6 +69,9 @@ public class CLI {
         }
     }
 
+    /**
+     * Muestra el menú principal de opciones del sistema.
+     */
     private void mostrarMenuPrincipal() {
         System.out.println("\n╔═══════════════════════════════════════╗");
         System.out.println("║     SISTEMA DE VENTAS LAMBORGHINI     ║");
@@ -58,6 +84,10 @@ public class CLI {
         System.out.print("Seleccione una opción: ");
     }
 
+    /**
+     * Procesa una nueva venta.
+     * Captura datos del cliente, permite seleccionar vehículos y genera el ticket.
+     */
     private void procesarNuevaVenta() {
         System.out.println("\n--- NUEVA VENTA ---");
         Cliente cliente = capturarDatosCliente();
@@ -93,6 +123,11 @@ public class CLI {
         }
     }
 
+    /**
+     * Captura los datos del cliente desde la entrada del usuario.
+     *
+     * @return objeto Cliente con los datos ingresados
+     */
     private Cliente capturarDatosCliente() {
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
@@ -109,6 +144,9 @@ public class CLI {
         return new Cliente(nombre, apellido, telefono, email, "");
     }
 
+    /**
+     * Muestra el catálogo de vehículos disponibles en formato tabla.
+     */
     private void mostrarCatalogo() {
         List<Auto> autos = autoRepository.obtenerTodos();
         System.out.println("\n╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
@@ -129,11 +167,19 @@ public class CLI {
         System.out.println("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
     }
 
+    /**
+     * Muestra todas las ventas realizadas con su información detallada.
+     */
     private void mostrarTodasLasVentas() {
         List<Venta> ventas = ventaRepository.obtenerTodas();
         reporteProcess.generarReporteVentas(ventas);
     }
 
+    /**
+     * Lee una opción de menú desde la entrada del usuario.
+     *
+     * @return número de opción seleccionada, o -1 si hay error
+     */
     private int leerOpcion() {
         try {
             int opcion = scanner.nextInt();
@@ -145,6 +191,11 @@ public class CLI {
         }
     }
 
+    /**
+     * Lee un número desde la entrada del usuario.
+     *
+     * @return número ingresado, o -1 si hay error
+     */
     private int leerNumero() {
         try {
             int numero = scanner.nextInt();

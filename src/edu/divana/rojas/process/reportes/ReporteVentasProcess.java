@@ -1,13 +1,24 @@
 package edu.divana.rojas.process.reportes;
 
-import java.util.List;
-
 import edu.divana.rojas.model.Auto;
 import edu.divana.rojas.model.Venta;
 import edu.divana.rojas.utils.FechaUtil;
+import java.util.List;
 
+/**
+ * Procesa la generación de reportes y tickets de venta.
+ * Crea documentos formateados para mostrar información de ventas individuales y colectivas.
+ *
+ * @author Divana Rojas
+ * @version 1.0
+ */
 public class ReporteVentasProcess {
 
+    /**
+     * Genera y muestra el ticket de venta para una venta específica.
+     * Incluye información del cliente, vehículos y total.
+     * @param venta venta para la cual generar el ticket
+     */
     public void generarTicketVenta(Venta venta) {
         System.out.println("\n╔════════════════════════════════════════════════════════════════╗");
         System.out.println("║                     TICKET DE VENTA LAMBORGHINI                  ║");
@@ -29,6 +40,10 @@ public class ReporteVentasProcess {
         System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
     }
 
+    /**
+     * Muestra un resumen compacto de una venta específica.
+     * @param venta venta para la cual mostrar el resumen
+     */
     public void mostrarResumenVenta(Venta venta) {
         System.out.println("\n--- RESUMEN DE VENTA ---");
         System.out.println("Cliente: " + venta.getCliente().getNombreCompleto());
@@ -39,6 +54,11 @@ public class ReporteVentasProcess {
         System.out.println("Fecha: " + FechaUtil.formatoCompleto(venta.getFecha()));
     }
 
+    /**
+     * Genera y muestra un reporte completo de todas las ventas.
+     * Si no hay ventas, muestra un mensaje indicándolo.
+     * @param ventas lista de ventas a reportar
+     */
     public void generarReporteVentas(List<Venta> ventas) {
         if (ventas.isEmpty()) {
             System.out.println("No hay ventas registradas.");
