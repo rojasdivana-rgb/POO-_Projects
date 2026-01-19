@@ -33,14 +33,21 @@ public class CLI {
             int opcion = leerOpcion();
 
             switch (opcion) {
-                case 1 -> procesarNuevaVenta();
-                case 2 -> mostrarTodasLasVentas();
-                case 3 -> mostrarCatalogo();
-                case 4 -> {
+                case 1:
+                    procesarNuevaVenta();
+                    break;
+                case 2:
+                    mostrarTodasLasVentas();
+                    break;
+                case 3:
+                    mostrarCatalogo();
+                    break;
+                case 4:
                     salir = true;
                     System.out.println("¡Gracias por usar el sistema!");
-                }
-                default -> System.out.println("Opción no válida. Intente nuevamente.");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente nuevamente.");
             }
         }
     }
