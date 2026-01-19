@@ -21,16 +21,16 @@ Push-Location "src"
 
 # Compilar todos los archivos
 $files = @(
-    "edu/divana/rojas/Main.java",
-    "edu/divana/rojas/model/Auto.java",
-    "edu/divana/rojas/model/Cliente.java", 
-    "edu/divana/rojas/model/Venta.java",
-    "edu/divana/rojas/repository/AutoRepository.java",
-    "edu/divana/rojas/repository/VentaRepository.java",
-    "edu/divana/rojas/process/ventas/VentaProcess.java",
-    "edu/divana/rojas/process/reportes/ReporteVentasProcess.java",
-    "edu/divana/rojas/ui/CLI.java",
-    "edu/divana/rojas/utils/FechaUtil.java"
+    "edu/carlos/castillo/actividad1/Main.java",
+    "edu/carlos/castillo/actividad1/model/Auto.java",
+    "edu/carlos/castillo/actividad1/model/Cliente.java", 
+    "edu/carlos/castillo/actividad1/model/Venta.java",
+    "edu/carlos/castillo/actividad1/repository/AutoRepository.java",
+    "edu/carlos/castillo/actividad1/repository/VentaRepository.java",
+    "edu/carlos/castillo/actividad1/process/ventas/VentaProcess.java",
+    "edu/carlos/castillo/actividad1/process/reportes/ReporteVentasProcess.java",
+    "edu/carlos/castillo/actividad1/ui/MainUI.java",
+    "edu/carlos/castillo/actividad1/utils/FechaUtil.java"
 )
 
 $compilationCommand = "javac -d ../bin -encoding UTF-8 $($files -join ' ')"
@@ -55,7 +55,7 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
 # Ejecutar el programa
-java -cp bin edu.divana.rojas.Main
+java -cp bin edu.carlos.castillo.actividad1.Main
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host ""
