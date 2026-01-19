@@ -1,6 +1,6 @@
-package edu.divana.rojas.actividad1;
+package edudivanarojas.actividad1;
 
-import edu.divana.rojas.actividad1.ui.CLI;
+import edudivanarojas.actividad1.ui.CLI;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,4 +8,5 @@ public class Main {
         interfaz.iniciar();
     }
 }
+
 

@@ -1,4 +1,4 @@
-package edu.divana.rojas.actividad1.model;
+package edudivanarojas.actividad1.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -75,4 +75,5 @@ public class Venta {
                 '}';
     }
 }
+
 

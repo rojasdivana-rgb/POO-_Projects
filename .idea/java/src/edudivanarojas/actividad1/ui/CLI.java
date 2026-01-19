@@ -1,15 +1,15 @@
-package edu.divana.rojas.actividad1.ui;
+package edudivanarojas.actividad1.ui;
 
 import java.util.List;
 import java.util.Scanner;
 
-import edu.divana.rojas.actividad1.model.Auto;
-import edu.divana.rojas.actividad1.model.Cliente;
-import edu.divana.rojas.actividad1.model.Venta;
-import edu.divana.rojas.actividad1.process.reportes.ReporteVentasProcess;
-import edu.divana.rojas.actividad1.process.ventas.VentaProcess;
-import edu.divana.rojas.actividad1.repository.AutoRepository;
-import edu.divana.rojas.actividad1.repository.VentaRepository;
+import edudivanarojas.actividad1.model.Auto;
+import edudivanarojas.actividad1.model.Cliente;
+import edudivanarojas.actividad1.model.Venta;
+import edudivanarojas.actividad1.process.reportes.ReporteVentasProcess;
+import edudivanarojas.actividad1.process.ventas.VentaProcess;
+import edudivanarojas.actividad1.repository.AutoRepository;
+import edudivanarojas.actividad1.repository.VentaRepository;
 
 public class CLI {
     private final Scanner scanner;
@@ -167,4 +167,5 @@ public class CLI {
         }
     }
 }
+
 

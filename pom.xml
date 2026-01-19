@@ -5,7 +5,7 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.divana.rojas</groupId>
+    <groupId>edudivanarojas</groupId>
     <artifactId>POO-_Projects</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
@@ -42,7 +42,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>edu.divana.rojas.actividad1.Main</mainClass>
+                            <mainClass>edudivanarojas.actividad1.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

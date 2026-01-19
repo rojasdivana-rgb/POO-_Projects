@@ -1,9 +1,9 @@
-package edu.divana.rojas.actividad1.process.ventas;
+package edudivanarojas.actividad1.process.ventas;
 
-import edu.divana.rojas.actividad1.model.Auto;
-import edu.divana.rojas.actividad1.model.Cliente;
-import edu.divana.rojas.actividad1.model.Venta;
-import edu.divana.rojas.actividad1.repository.VentaRepository;
+import edudivanarojas.actividad1.model.Auto;
+import edudivanarojas.actividad1.model.Cliente;
+import edudivanarojas.actividad1.model.Venta;
+import edudivanarojas.actividad1.repository.VentaRepository;
 
 public class VentaProcess {
     private final VentaRepository ventaRepository;
@@ -43,4 +43,5 @@ public class VentaProcess {
         ventaActual = null;
     }
 }
+
 

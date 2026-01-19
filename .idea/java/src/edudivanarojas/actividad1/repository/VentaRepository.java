@@ -1,9 +1,9 @@
-package edu.divana.rojas.actividad1.repository;
+package edudivanarojas.actividad1.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.divana.rojas.actividad1.model.Venta;
+import edudivanarojas.actividad1.model.Venta;
 
 public class VentaRepository {
     private final List<Venta> ventas;
@@ -37,4 +37,5 @@ public class VentaRepository {
         return ventas.size();
     }
 }
+
 

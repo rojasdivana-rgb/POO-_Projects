@@ -7,9 +7,9 @@
         {
             "name": "Java: Launch Main",
             "type": "java",
-            "name": "Launch edu.divana.rojas.actividad1.Main",
+            "name": "Launch edudivanarojas.actividad1.Main",
             "request": "launch",
-            "mainClass": "edu.divana.rojas.actividad1.Main",
+            "mainClass": "edudivanarojas.actividad1.Main",
             "projectName": "POO-_Projects",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",

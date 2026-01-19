@@ -1,4 +1,4 @@
-package edu.divana.rojas.actividad1.model;
+package edudivanarojas.actividad1.model;
 
 public class Cliente {
     private String nombre;
@@ -69,4 +69,5 @@ public class Cliente {
                 '}';
     }
 }
+
 

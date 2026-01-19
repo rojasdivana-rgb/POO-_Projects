@@ -1,4 +1,4 @@
-package edu.divana.rojas.actividad1.model;
+package edudivanarojas.actividad1.model;
 
 public class Auto {
     private int id;
@@ -111,4 +111,5 @@ public class Auto {
             id, modelo, año, motor, potencia, velocidadMax, precio);
     }
 }
+
 

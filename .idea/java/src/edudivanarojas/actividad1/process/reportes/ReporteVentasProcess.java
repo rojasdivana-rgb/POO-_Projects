@@ -1,10 +1,10 @@
-package edu.divana.rojas.actividad1.process.reportes;
+package edudivanarojas.actividad1.process.reportes;
 
 import java.util.List;
 
-import edu.divana.rojas.actividad1.model.Auto;
-import edu.divana.rojas.actividad1.model.Venta;
-import edu.divana.rojas.actividad1.utils.FechaUtil;
+import edudivanarojas.actividad1.model.Auto;
+import edudivanarojas.actividad1.model.Venta;
+import edudivanarojas.actividad1.utils.FechaUtil;
 
 public class ReporteVentasProcess {
 
@@ -59,4 +59,5 @@ public class ReporteVentasProcess {
         System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
     }
 }
+
 

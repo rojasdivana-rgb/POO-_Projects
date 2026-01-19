@@ -1,9 +1,9 @@
-package edu.divana.rojas.actividad1.repository;
+package edudivanarojas.actividad1.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.divana.rojas.actividad1.model.Auto;
+import edudivanarojas.actividad1.model.Auto;
 
 public class AutoRepository {
     private final List<Auto> autos;
@@ -54,4 +54,5 @@ public class AutoRepository {
         return autos.size();
     }
 }
+
 

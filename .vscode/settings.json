@@ -7,5 +7,6 @@
     "java.project.outputPath": ".idea/java/src/bin",
     "java.project.referencedLibraries": [],
     "java.configuration.runtimes": [],
-    "java.errors.incompleteClasspath.severity": "warning"
+    "java.errors.incompleteClasspath.severity": "warning",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

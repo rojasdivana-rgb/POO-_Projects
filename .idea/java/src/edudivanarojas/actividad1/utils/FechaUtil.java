@@ -1,4 +1,4 @@
-package edu.divana.rojas.actividad1.utils;
+package edudivanarojas.actividad1.utils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,4 +20,5 @@ public class FechaUtil {
         return dateTime.format(FORMATO_HORA);
     }
 }
+
 
