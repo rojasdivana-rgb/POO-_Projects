@@ -28,11 +28,24 @@ bin/
 target/
 .idea/java/src/bin/
 build/
+out/
+dist/
 
 # IDE
-.vscode/*
+.vscode/extensions/
+.vscode/launch.json
+.vscode/settings.json
 !.vscode/launch.json
 !.vscode/settings.json
+*.code-workspace
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+*.idea
+.gradle
 
 # Maven
 pom.xml.tag
@@ -47,4 +60,9 @@ dependency-reduced-pom.xml
 # OS
 .DS_Store
 Thumbs.db
+
+# Temp files
+*.tmp
+*.bak
+*~
 
