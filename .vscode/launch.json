@@ -7,13 +7,15 @@
         {
             "name": "Java: Launch Main",
             "type": "java",
-            "name": "Launch actividad1.Main",
+            "name": "Launch edu.divana.rojas.actividad1.Main",
             "request": "launch",
-            "mainClass": "actividad1.Main",
+            "mainClass": "edu.divana.rojas.actividad1.Main",
             "projectName": "POO-_Projects",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
-            "stopOnEntry": false
+            "stopOnEntry": false,
+            "args": [],
+            "classPaths": ["${workspaceFolder}/.idea/java/src/bin"]
         }
     ]
 }
