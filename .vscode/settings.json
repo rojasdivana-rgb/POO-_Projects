@@ -3,8 +3,8 @@
         "redhat.java.home": null,
         "java.home": null
     },
-    "java.project.sourcePaths": ["src"],
-    "java.project.outputPath": "bin",
+    "java.project.sourcePaths": [".idea/java/src"],
+    "java.project.outputPath": ".idea/java/src/bin",
     "java.project.referencedLibraries": [],
     "java.configuration.runtimes": [],
     "java.errors.incompleteClasspath.severity": "warning"

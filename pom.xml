@@ -20,8 +20,8 @@
     </properties>
 
     <build>
-        <sourceDirectory>src</sourceDirectory>
-        <outputDirectory>bin</outputDirectory>
+        <sourceDirectory>.idea/java/src</sourceDirectory>
+        <outputDirectory>.idea/java/src/bin</outputDirectory>
         
         <plugins>
             <plugin>

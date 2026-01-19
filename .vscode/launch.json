@@ -14,7 +14,8 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "stopOnEntry": false,
-            "args": []
+            "args": [],
+            "classPaths": ["${workspaceFolder}/.idea/java/src/bin"]
         }
     ]
 }
