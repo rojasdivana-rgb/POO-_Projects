@@ -23,25 +23,14 @@ public class VentaProcess {
         }
     }
 
-    public void eliminarAutoDeVenta(int idAuto) {
-        if (ventaActual != null) {
-            ventaActual.eliminarAuto(idAuto);
+    public void finalizarVenta() {
+        if (ventaActual != null && !ventaActual.getAutos().isEmpty()) {
+            ventaRepository.guardarVenta(ventaActual);
+            ventaActual = null;
         }
     }
 
     public Venta obtenerVentaActual() {
         return ventaActual;
     }
-
-    public void finalizarVenta() {
-        if (ventaActual != null && !ventaActual.getAutos().isEmpty()) {
-            ventaRepository.guardarVenta(ventaActual);
-        }
-    }
-
-    public void cancelarVenta() {
-        ventaActual = null;
-    }
 }
-
-

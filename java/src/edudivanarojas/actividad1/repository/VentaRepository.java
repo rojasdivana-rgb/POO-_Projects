@@ -2,7 +2,6 @@ package edudivanarojas.actividad1.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import edudivanarojas.actividad1.model.Venta;
 
 public class VentaRepository {
@@ -15,8 +14,7 @@ public class VentaRepository {
     }
 
     public void guardarVenta(Venta venta) {
-        contadorVentas++;
-        venta.setIdVenta(contadorVentas);
+        venta.setIdVenta(++contadorVentas);
         ventas.add(venta);
     }
 
@@ -37,5 +35,3 @@ public class VentaRepository {
         return ventas.size();
     }
 }
-
-

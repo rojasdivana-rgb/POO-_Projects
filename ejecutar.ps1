@@ -1,7 +1,7 @@
-# Script para compilar y ejecutar el programa en PowerShell
+# Script para compilar y ejecutar el sistema de ventas Lamborghini
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "  COMPILADOR - LAMBORGHINI DEALER" -ForegroundColor Cyan
+Write-Host "  SISTEMA DE VENTAS LAMBORGHINI" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -17,34 +17,24 @@ if (-not (Test-Path "bin")) {
 Write-Host "[1/3] Compilando archivos..." -ForegroundColor Yellow
 Write-Host ""
 
-Push-Location "src"
+# Obtener todos los archivos Java recursivamente
+$allJavaFiles = Get-ChildItem -Path "src" -Filter "*.java" -Recurse
 
-# Compilar todos los archivos
-$files = @(
-    "edu/carlos/castillo/actividad1/Main.java",
-    "edu/carlos/castillo/actividad1/model/Auto.java",
-    "edu/carlos/castillo/actividad1/model/Cliente.java", 
-    "edu/carlos/castillo/actividad1/model/Venta.java",
-    "edu/carlos/castillo/actividad1/repository/AutoRepository.java",
-    "edu/carlos/castillo/actividad1/repository/VentaRepository.java",
-    "edu/carlos/castillo/actividad1/process/ventas/VentaProcess.java",
-    "edu/carlos/castillo/actividad1/process/reportes/ReporteVentasProcess.java",
-    "edu/carlos/castillo/actividad1/ui/MainUI.java",
-    "edu/carlos/castillo/actividad1/utils/FechaUtil.java"
-)
-
-$compilationCommand = "javac -d ../bin -encoding UTF-8 $($files -join ' ')"
-Invoke-Expression $compilationCommand
-
-if ($LASTEXITCODE -ne 0) {
-    Write-Host ""
-    Write-Host "ERROR: La compilacion fallo." -ForegroundColor Red
-    Pop-Location
+if ($allJavaFiles.Count -eq 0) {
+    Write-Host "ERROR: No se encontraron archivos Java en src/" -ForegroundColor Red
     Read-Host "Presione Enter para salir"
     exit 1
 }
 
-Pop-Location
+# Compilar todos los archivos - pasar como array para evitar problemas con espacios
+& javac -d bin -encoding UTF-8 @($allJavaFiles.FullName)
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host ""
+    Write-Host "ERROR: La compilacion fallo." -ForegroundColor Red
+    Read-Host "Presione Enter para salir"
+    exit 1
+}
 
 Write-Host ""
 Write-Host "[2/3] Compilacion exitosa!" -ForegroundColor Green
@@ -55,7 +45,18 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
 # Ejecutar el programa
-java -cp bin edu.carlos.castillo.actividad1.Main
+java -cp bin edudivanarojas.actividad1.Main
+
+if ($LASTEXITCODE -ne 0) {
+    Write-Host ""
+    Write-Host "ERROR: Fallo durante la ejecucion." -ForegroundColor Red
+    Read-Host "Presione Enter para salir"
+    exit 1
+}
+Write-Host ""
+
+# Ejecutar el programa
+& java -cp "$outputDir" edudivanarojas.actividad1.Main
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host ""

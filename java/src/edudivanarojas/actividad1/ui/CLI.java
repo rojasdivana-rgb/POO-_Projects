@@ -2,7 +2,6 @@ package edudivanarojas.actividad1.ui;
 
 import java.util.List;
 import java.util.Scanner;
-
 import edudivanarojas.actividad1.model.Auto;
 import edudivanarojas.actividad1.model.Cliente;
 import edudivanarojas.actividad1.model.Venta;
@@ -44,10 +43,10 @@ public class CLI {
                     break;
                 case 4:
                     salir = true;
-                    System.out.println("¡Gracias por usar el sistema!");
+                    System.out.println("✓ ¡Gracias por usar el sistema!");
                     break;
                 default:
-                    System.out.println("Opción no válida. Intente nuevamente.");
+                    System.out.println("✗ Opción no válida. Intente nuevamente.");
             }
         }
     }
@@ -65,20 +64,21 @@ public class CLI {
     }
 
     private void procesarNuevaVenta() {
-        System.out.println("\n--- NUEVA VENTA ---");
+        System.out.println("\n✓ --- NUEVA VENTA ---");
         Cliente cliente = capturarDatosCliente();
 
         ventaProcess.iniciarVenta(cliente);
 
         boolean agregarMas = true;
         while (agregarMas) {
+            System.out.println();
             mostrarCatalogo();
             System.out.print("Ingrese el ID del vehículo a agregar (0 para finalizar): ");
             int idAuto = leerNumero();
 
             if (idAuto == 0) {
                 agregarMas = false;
-            } else {
+            } else if (idAuto > 0) {
                 Auto auto = autoRepository.obtenerPorId(idAuto);
                 if (auto != null) {
                     ventaProcess.agregarAutoAVenta(auto);
@@ -86,14 +86,20 @@ public class CLI {
                 } else {
                     System.out.println("✗ Vehículo no encontrado.");
                 }
+            } else {
+                System.out.println("✗ Opción inválida. Ingrese un ID válido.");
             }
         }
 
         Venta ventaActual = ventaProcess.obtenerVentaActual();
         if (ventaActual != null && !ventaActual.getAutos().isEmpty()) {
-            reporteProcess.generarTicketVenta(ventaActual);
             ventaProcess.finalizarVenta();
-            System.out.println("✓ Venta guardada exitosamente.");
+            List<Venta> ventas = ventaRepository.obtenerTodas();
+            if (!ventas.isEmpty()) {
+                Venta ventaGuardada = ventas.get(ventas.size() - 1);
+                reporteProcess.generarTicketVenta(ventaGuardada);
+                System.out.println("✓ Venta guardada exitosamente.");
+            }
         } else {
             System.out.println("✗ No se agregaron vehículos a la venta.");
         }
@@ -103,36 +109,31 @@ public class CLI {
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
 
-        System.out.print("Apellido: ");
-        String apellido = scanner.nextLine();
-
         System.out.print("Teléfono: ");
         String telefono = scanner.nextLine();
 
         System.out.print("Email: ");
         String email = scanner.nextLine();
 
-        return new Cliente(nombre, apellido, telefono, email, "");
+        return new Cliente(nombre, telefono, email);
     }
 
     private void mostrarCatalogo() {
         List<Auto> autos = autoRepository.obtenerTodos();
-        System.out.println("\n╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
-        System.out.println("║ ID │ Modelo               │ Año  │ Motor        │ Potencia │ Velocidad │ Precio      │");
-        System.out.println("╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+        System.out.println("\n╔══════════════════════════════════════════════════════════════════════════════╗");
+        System.out.println("║                      CATÁLOGO DE LAMBORGHINI                              ║");
+        System.out.println("╠══════════════════════════════════════════════════════════════════════════════╣");
 
         for (Auto auto : autos) {
-            System.out.printf("║ %-2d │ %-20s │ %-4d │ %-12s │ %-8s │ %-9d │ $%-10.2f │\n",
-                auto.getId(),
-                auto.getModelo().substring(0, Math.min(20, auto.getModelo().length())),
-                auto.getAño(),
-                auto.getMotor().substring(0, Math.min(12, auto.getMotor().length())),
-                auto.getPotencia(),
-                auto.getVelocidadMax(),
-                auto.getPrecio());
+            System.out.printf("║ [%2d] %-18s (%d) - %d HP - $%-12.2f ║\n",
+                    auto.getId(),
+                    auto.getModelo(),
+                    auto.getAño(),
+                    auto.getPotenciaHP(),
+                    auto.getPrecio());
         }
 
-        System.out.println("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+        System.out.println("╚══════════════════════════════════════════════════════════════════════════════╝");
     }
 
     private void mostrarTodasLasVentas() {
@@ -142,37 +143,29 @@ public class CLI {
 
     private int leerOpcion() {
         try {
-            if (scanner.hasNextInt()) {
-                int opcion = scanner.nextInt();
-                scanner.nextLine();
-                return opcion;
-            } else if (scanner.hasNextLine()) {
-                scanner.nextLine();
+            String entrada = scanner.nextLine().trim();
+            if (entrada.isEmpty()) {
                 return -1;
-            } else {
-                return 4; // Salir si no hay entrada
             }
+            return Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            return -1;
         } catch (Exception e) {
-            return 4; // Salir si hay error
+            return -1;
         }
     }
 
     private int leerNumero() {
         try {
-            if (scanner.hasNextInt()) {
-                int numero = scanner.nextInt();
-                scanner.nextLine();
-                return numero;
-            } else if (scanner.hasNextLine()) {
-                scanner.nextLine();
+            String entrada = scanner.nextLine().trim();
+            if (entrada.isEmpty()) {
                 return -1;
-            } else {
-                return 0;
             }
+            return Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            return -1;
         } catch (Exception e) {
-            return 0;
+            return -1;
         }
     }
 }
-
-
