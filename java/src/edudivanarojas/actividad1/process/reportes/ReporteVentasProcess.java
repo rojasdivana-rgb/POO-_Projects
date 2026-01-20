@@ -1,12 +1,27 @@
 package edudivanarojas.actividad1.process.reportes;
 
 import java.util.List;
+
 import edudivanarojas.actividad1.model.Auto;
 import edudivanarojas.actividad1.model.Venta;
 import edudivanarojas.actividad1.utils.FechaUtil;
 
+/**
+ * Clase que gestiona la generación de reportes y tickets de ventas.
+ * Proporciona métodos para mostrar información detallada y resumida de las
+ * transacciones.
+ *
+ * @author Edudivania Rojas
+ * @version 1.0
+ */
 public class ReporteVentasProcess {
 
+    /**
+     * Genera y muestra un ticket detallado de una venta.
+     * Incluye información del cliente, vehículos comprados y total de la venta.
+     *
+     * @param venta Venta para la cual se generará el ticket
+     */
     public void generarTicketVenta(Venta venta) {
         System.out.println("\n╔═══════════════════════════════════════════════════════════════════════════════╗");
         System.out.println("║                       TICKET DE VENTA LAMBORGHINI                           ║");
@@ -32,6 +47,11 @@ public class ReporteVentasProcess {
         System.out.println("╚═══════════════════════════════════════════════════════════════════════════════╝\n");
     }
 
+    /**
+     * Muestra un resumen breve de una venta específica.
+     *
+     * @param venta Venta cuya información se mostrará
+     */
     public void mostrarResumenVenta(Venta venta) {
         System.out.println("\n--- RESUMEN DE VENTA ---");
         System.out.println("Cliente: " + venta.getCliente().getNombre());
@@ -40,6 +60,12 @@ public class ReporteVentasProcess {
         System.out.println("Fecha: " + FechaUtil.formatearFecha(venta.getFecha()));
     }
 
+    /**
+     * Genera un reporte con el listado de todas las ventas registradas.
+     * Muestra un mensaje si no hay ventas disponibles.
+     *
+     * @param ventas Lista de todas las ventas a reportar
+     */
     public void generarReporteVentas(List<Venta> ventas) {
         if (ventas.isEmpty()) {
             System.out.println("✗ No hay ventas registradas.");
