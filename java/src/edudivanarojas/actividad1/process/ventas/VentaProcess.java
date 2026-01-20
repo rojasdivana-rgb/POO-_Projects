@@ -1,0 +1,36 @@
+package edudivanarojas.actividad1.process.ventas;
+
+import edudivanarojas.actividad1.model.Auto;
+import edudivanarojas.actividad1.model.Cliente;
+import edudivanarojas.actividad1.model.Venta;
+import edudivanarojas.actividad1.repository.VentaRepository;
+
+public class VentaProcess {
+    private final VentaRepository ventaRepository;
+    private Venta ventaActual;
+
+    public VentaProcess(VentaRepository ventaRepository) {
+        this.ventaRepository = ventaRepository;
+    }
+
+    public void iniciarVenta(Cliente cliente) {
+        this.ventaActual = new Venta(0, cliente);
+    }
+
+    public void agregarAutoAVenta(Auto auto) {
+        if (ventaActual != null) {
+            ventaActual.agregarAuto(auto);
+        }
+    }
+
+    public void finalizarVenta() {
+        if (ventaActual != null && !ventaActual.getAutos().isEmpty()) {
+            ventaRepository.guardarVenta(ventaActual);
+            ventaActual = null;
+        }
+    }
+
+    public Venta obtenerVentaActual() {
+        return ventaActual;
+    }
+}
