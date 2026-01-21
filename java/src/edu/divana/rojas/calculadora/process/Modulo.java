@@ -6,6 +6,7 @@ package edu.divana.rojas.calculadora.process;
 public class Modulo {
     /**
      * Calcula el residuo de la división de dos números.
+     *
      * @param n1 Dividendo.
      * @param n2 Divisor.
      * @return El residuo de n1 / n2.

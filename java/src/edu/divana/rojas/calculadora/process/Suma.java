@@ -6,6 +6,7 @@ package edu.divana.rojas.calculadora.process;
 public class Suma {
     /**
      * Realiza la suma de dos números reales.
+     *
      * @param n1 Primer sumando.
      * @param n2 Segundo sumando.
      * @return El resultado de n1 + n2.

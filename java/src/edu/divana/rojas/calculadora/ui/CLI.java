@@ -30,15 +30,31 @@ public class CLI {
                 double n2 = scanner.nextDouble();
 
                 double res = 0;
-                switch(opcion) {
-                    case 1: res = Suma.realizarOperacion(n1, n2); break;
-                    case 2: res = Resta.realizarOperacion(n1, n2); break;
-                    case 3: res = Multiplicacion.realizarOperacion(n1, n2); break;
-                    case 4: res = Division.realizarOperacion(n1, n2); break;
-                    case 5: res = Modulo.realizarOperacion(n1, n2); break;
-                    case 6: res = Potencia.realizarOperacion(n1, n2); break;
-                    case 7: res = Logaritmo.realizarOperacion(n1, n2); break;
-                    case 8: res = Raiz.realizarOperacion(n1, n2); break;
+                switch (opcion) {
+                    case 1:
+                        res = Suma.realizarOperacion(n1, n2);
+                        break;
+                    case 2:
+                        res = Resta.realizarOperacion(n1, n2);
+                        break;
+                    case 3:
+                        res = Multiplicacion.realizarOperacion(n1, n2);
+                        break;
+                    case 4:
+                        res = Division.realizarOperacion(n1, n2);
+                        break;
+                    case 5:
+                        res = Modulo.realizarOperacion(n1, n2);
+                        break;
+                    case 6:
+                        res = Potencia.realizarOperacion(n1, n2);
+                        break;
+                    case 7:
+                        res = Logaritmo.realizarOperacion(n1, n2);
+                        break;
+                    case 8:
+                        res = Raiz.realizarOperacion(n1, n2);
+                        break;
                 }
                 System.out.println("Resultado: " + res);
             }

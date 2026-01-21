@@ -6,7 +6,8 @@ package edu.divana.rojas.calculadora.process;
 public class Lotgaritmo {
     /**
      * Calcula el logaritmo entero.
-     * @param base Base del logaritmo.
+     *
+     * @param base      Base del logaritmo.
      * @param argumento Número al que se le aplica el logaritmo.
      * @return El exponente al que hay que elevar la base para llegar al argumento.
      */

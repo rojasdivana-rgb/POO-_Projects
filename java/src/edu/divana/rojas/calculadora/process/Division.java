@@ -6,6 +6,7 @@ package edu.divana.rojas.calculadora.process;
 public class Division {
     /**
      * Calcula el cociente de una división entera.
+     *
      * @param n1 Dividendo.
      * @param n2 Divisor.
      * @return Cantidad de veces que n2 cabe en n1.

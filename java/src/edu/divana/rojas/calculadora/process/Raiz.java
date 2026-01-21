@@ -6,7 +6,8 @@ package edu.divana.rojas.calculadora.process;
 public class Raiz {
     /**
      * Encuentra la raíz cuadrada (índice 2) de un número.
-     * @param indice El grado de la raíz (ej. 2 para cuadrada).
+     *
+     * @param indice    El grado de la raíz (ej. 2 para cuadrada).
      * @param radicando El número al que se le busca la raíz.
      * @return La raíz positiva más cercana (entera).
      */

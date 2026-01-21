@@ -6,6 +6,7 @@ package edu.divana.rojas.calculadora.process;
 public class Multiplicacion {
     /**
      * Calcula el producto de dos números usando únicamente la clase Suma.
+     *
      * @param n1 Multiplicando.
      * @param n2 Multiplicador (debe ser entero para el bucle).
      * @return El producto total.

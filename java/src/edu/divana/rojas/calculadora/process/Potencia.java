@@ -6,7 +6,8 @@ package edu.divana.rojas.calculadora.process;
 public class Potencia {
     /**
      * Calcula la potencia de un número.
-     * @param base Base.
+     *
+     * @param base      Base.
      * @param exponente Exponente.
      * @return El resultado de base^exponente.
      */

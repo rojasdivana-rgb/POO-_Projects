@@ -6,6 +6,7 @@ package edu.divana.rojas.calculadora.process;
 public class Resta {
     /**
      * Realiza la sustracción de dos números.
+     *
      * @param n1 Minuendo.
      * @param n2 Sustraendo.
      * @return La diferencia entre n1 y n2.
