@@ -2,27 +2,18 @@ package edu.divana.rojas.actividad3.process;
 
 import java.util.List;
 
-/**
- * Utilidades para listas de empleados
- */
+
+ //Utilidades para listas de empleados
+
 public class MayorSalarioMayorDe30 {
 
     private double sueldo;
     private int Edad;
 
-    /**
-     * Devuelve el empleado con el MAYOR salario entre aquellos que tienen
-     * más de 30 años de edad.
-     *
-     * Reglas:
-     * - Solo considera empleados con Edad > 30
-     * - Si varios tienen el mismo salario máximo → devuelve el primero encontrado
-     * - Si no hay empleados > 30 años → devuelve null
-     * - Si la lista es null o está vacía → devuelve null
-     *
-     * @param empleados lista de objetos Empleado
-     * @return el empleado con mayor salario entre los > 30 años, o null si no existe
-     */
+
+     //Devuelve el empleado con el MAYOR salario entre aquellos que tienen más de 30 años de edad.
+      //@param empleados lista de objetos Empleado
+     //@return el empleado con mayor salario entre los > 30 años, o null si no existe
     public static EmpleadoUtils empleadoMayorSalarioMayorDe30(List<EmpleadoUtils> empleados) {
 
         if (empleados == null || empleados.isEmpty()) {

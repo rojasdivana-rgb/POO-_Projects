@@ -18,6 +18,7 @@ public class EdadPromedioTest {
 
     @Test
     public void testPromedioEdadConLista() {
+        // Lista con tres empleados de edades 20, 30 y 40
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils(20),
                 new EmpleadoUtils(30),
@@ -25,13 +26,18 @@ public class EdadPromedioTest {
         );
 
         double resultado = EdadPromedio.promedioEdad(empleados);
-        assertEquals(30.0, resultado); // (20 + 30 + 40) / 3 = 30.0
+
+        // Promedio esperado: (20 + 30 + 40) / 3 = 30.0
+        assertEquals(30.0, resultado);
     }
 
     @Test
     public void testListaVacia() {
+        // Lista vacía → debe devolver 0.0
         List<EmpleadoUtils> empleados = Arrays.asList();
+
         double resultado = EdadPromedio.promedioEdad(empleados);
-        assertEquals(0.0, resultado); // lista vacía devuelve 0.0
+
+        assertEquals(0.0, resultado);
     }
 }

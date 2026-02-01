@@ -7,17 +7,10 @@ import java.util.List;
  */
 public class EdadPromedio {
 
-    /**
-     * Calcula el promedio de edad de todos los empleados en la lista.
-     *
-     * Casos especiales:
-     * - Si la lista es null o está vacía → devuelve 0.0
-     * - Si algún empleado tiene edad negativa → se incluye en el cálculo
-     *   (puedes agregar validación si el ejercicio lo requiere)
-     *
-     * @param empleados lista de objetos Empleado
-     * @return promedio de edad (double) o 0.0 si no hay empleados
-     */
+
+     //@param empleados lista de objetos Empleado
+     //@return promedio de edad (double) o 0.0 si no hay empleados
+
     public static double promedioEdad(List<EmpleadoUtils> empleados) {
 
         // Caso borde: lista inválida

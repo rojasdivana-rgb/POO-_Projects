@@ -18,6 +18,7 @@ public class EdadMasComunTest {
 
     @Test
     public void testEdadMasComunConLista() {
+        // Lista con varias edades repetidas
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils(25),
                 new EmpleadoUtils(30),
@@ -28,13 +29,18 @@ public class EdadMasComunTest {
         );
 
         int resultado = EdadMasComun.edadMasComun(empleados);
-        assertEquals(25, resultado); // 25 aparece 3 veces, más que las demás
+
+        // 25 aparece 3 veces, más que las demás
+        assertEquals(25, resultado);
     }
 
     @Test
     public void testListaVacia() {
+        // Lista vacía → debe devolver 0
         List<EmpleadoUtils> empleados = Arrays.asList();
+
         int resultado = EdadMasComun.edadMasComun(empleados);
-        assertEquals(0, resultado); // lista vacía devuelve 0
+
+        assertEquals(0, resultado);
     }
 }

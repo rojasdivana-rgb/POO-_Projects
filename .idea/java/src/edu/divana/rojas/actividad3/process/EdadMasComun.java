@@ -6,14 +6,10 @@ import java.util.Map;
 
 public class EdadMasComun {
 
-    /**
-     * Encuentra la edad que aparece con mayor frecuencia en la lista de empleados.
-     * Si hay varias edades con la misma cantidad máxima de repeticiones,
-     * devuelve la primera que encuentre (comportamiento habitual en estos ejercicios).
-     *
-     * @param empleados lista de objetos Empleado
-     * @return la edad más común, o 0 si la lista es null o está vacía
-     */
+
+     //@param empleados lista de objetos Empleado
+     //@return la edad más común, o 0 si la lista es null o está vacía
+
     public static int edadMasComun(List<EmpleadoUtils> empleados) {
 
         // Caso borde: lista inválida

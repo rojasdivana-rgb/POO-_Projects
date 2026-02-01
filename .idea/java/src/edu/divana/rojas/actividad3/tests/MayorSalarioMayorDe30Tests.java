@@ -20,27 +20,34 @@ public class MayorSalarioMayorDe30Test {
 
     @Test
     public void testEmpleadoMayorSalarioMayorDe30() {
+        // Lista con empleados de distintas edades y sueldos
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils(28, 50000), // no cuenta (edad <= 30)
-                new EmpleadoUtils(35, 60000), // candidato
+                new EmpleadoUtils(35, 60000), // candidato válido
                 new EmpleadoUtils(40, 55000), // menor sueldo
                 new EmpleadoUtils(50, 70000)  // mayor sueldo
         );
 
         EmpleadoUtils resultado = MayorSalarioMayorDe30.empleadoMayorSalarioMayorDe30(empleados);
+
+        // Validamos que el resultado no sea null
         assertNotNull(resultado);
+        // El empleado con mayor sueldo y edad > 30 debe ser el de 50 años con 70,000
         assertEquals(50, resultado.edad);
         assertEquals(70000, resultado.sueldo);
     }
 
     @Test
     public void testSinEmpleadosMayoresDe30() {
+        // Lista con empleados de 30 años o menos
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils(25, 40000),
                 new EmpleadoUtils(30, 45000)
         );
 
         EmpleadoUtils resultado = MayorSalarioMayorDe30.empleadoMayorSalarioMayorDe30(empleados);
-        assertNull(resultado); // ninguno cumple la condición
+
+        // Ninguno cumple la condición → debe devolver null
+        assertNull(resultado);
     }
 }

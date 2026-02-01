@@ -18,6 +18,7 @@ public class SalarioPromedioTest {
 
     @Test
     public void testPromedioSalarioConLista() {
+        // Lista con tres empleados con sueldos distintos
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils(1000.0),
                 new EmpleadoUtils(2000.0),
@@ -25,13 +26,18 @@ public class SalarioPromedioTest {
         );
 
         double resultado = SalarioPromedio.promedioSalario(empleados);
-        assertEquals(2000.0, resultado); // (1000 + 2000 + 3000) / 3 = 2000.0
+
+        // Promedio esperado: (1000 + 2000 + 3000) / 3 = 2000.0
+        assertEquals(2000.0, resultado);
     }
 
     @Test
     public void testListaVacia() {
+        // Lista vacía → debe devolver 0.0
         List<EmpleadoUtils> empleados = Arrays.asList();
+
         double resultado = SalarioPromedio.promedioSalario(empleados);
-        assertEquals(0.0, resultado); // lista vacía devuelve 0.0
+
+        assertEquals(0.0, resultado);
     }
 }

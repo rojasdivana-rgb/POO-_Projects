@@ -1,7 +1,6 @@
 package edu.divana.rojas.actividad3.tests;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContadorVocalesTest {
@@ -16,6 +15,7 @@ public class ContadorVocalesTest {
 
     @Test
     public void testTextoSinVocales() {
+        // Caso con palabra sin vocales
         String texto = "rhythm";
         int resultado = ContadorVocales.contarVocales(texto);
         assertEquals(0, resultado); // No hay vocales

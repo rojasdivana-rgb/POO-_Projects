@@ -2,19 +2,16 @@ package edu.divana.rojas.actividad3.process;
 
 import java.util.List;
 
-/**
- * Utilidades para listas de empleados
- */
+
+ //Utilidades para listas de empleados.
+
 public class EmpleadosDeSistemas {
 
     private String Departamento;
 
-    /**
-     * Cuenta cuántos empleados pertenecen al departamento de "Sistemas".
-     *
-     * @param empleados lista de objetos Empleado
-     * @return cantidad de empleados en el departamento de Sistemas
-     */
+     //@param empleados lista de objetos Empleado
+     //@return cantidad de empleados en el departamento de Sistemas
+
     public static int contarEmpleadosDeSistemas(List<EmpleadoUtils> empleados) {
 
         if (empleados == null || empleados.isEmpty()) {

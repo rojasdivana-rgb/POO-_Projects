@@ -3,16 +3,8 @@ package edu.divana.rojas.actividad3.process;
 import java.util.*;
 public class MenorSalarioYEdad {
 
-/**
- * Devuelve un empleado que:
- * 1. Tiene el salario MÁS BAJO de toda la lista
- * 2. Su edad es una de las edades con MENOR frecuencia (menos común)
- *
- * Si hay varios con salario mínimo → elige el que tenga la edad menos frecuente
- * Si hay empate en frecuencia → devuelve cualquiera (el primero encontrado)
- *
- * @return empleado que cumple ambas condiciones o null si la lista es null/vacía
- */
+ //@return empleado que cumple ambas condiciones o null si la lista es null/vacía
+
 public static EmpleadoUtils empleadoMenorSalarioConEdadMenosComun(List<EmpleadoUtils> empleados) {
     if (empleados == null || empleados.isEmpty()) {
         return null;

@@ -20,6 +20,7 @@ public class PromedioEdadMas25KTest {
 
     @Test
     public void testPromedioEdadMayores25K() {
+        // Lista con empleados, algunos con sueldo mayor a 25K
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils(30, 20000), // no cuenta
                 new EmpleadoUtils(40, 30000), // sí cuenta
@@ -27,17 +28,22 @@ public class PromedioEdadMas25KTest {
         );
 
         double resultado = PromedioEdadMas25K.promedioEdadMayores25K(empleados);
-        assertEquals(45.0, resultado); // (40 + 50) / 2 = 45.0
+
+        // Promedio esperado: (40 + 50) / 2 = 45.0
+        assertEquals(45.0, resultado);
     }
 
     @Test
     public void testSinEmpleadosQueCumplanCondicion() {
+        // Lista con empleados que no superan los 25K
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils(25, 20000),
                 new EmpleadoUtils(35, 25000)
         );
 
         double resultado = PromedioEdadMas25K.promedioEdadMayores25K(empleados);
-        assertEquals(0.0, resultado); // ninguno supera 25K
+
+        // Ninguno cumple la condición → debe devolver 0.0
+        assertEquals(0.0, resultado);
     }
 }

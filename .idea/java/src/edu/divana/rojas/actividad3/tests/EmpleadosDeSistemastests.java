@@ -18,6 +18,7 @@ public class EmpleadosDeSistemasTest {
 
     @Test
     public void testContarEmpleadosDeSistemas() {
+        // Lista con empleados de distintos departamentos
         List<EmpleadoUtils> empleados = Arrays.asList(
                 new EmpleadoUtils("Sistemas"),
                 new EmpleadoUtils("Ventas"),
@@ -26,13 +27,18 @@ public class EmpleadosDeSistemasTest {
         );
 
         int resultado = EmpleadosDeSistemas.contarEmpleadosDeSistemas(empleados);
-        assertEquals(2, resultado); // hay 2 empleados en "Sistemas"
+
+        // Esperamos 2 porque hay dos empleados en "Sistemas"
+        assertEquals(2, resultado);
     }
 
     @Test
     public void testListaVacia() {
+        // Lista vacía → debe devolver 0
         List<EmpleadoUtils> empleados = Arrays.asList();
+
         int resultado = EmpleadosDeSistemas.contarEmpleadosDeSistemas(empleados);
-        assertEquals(0, resultado); // lista vacía devuelve 0
+
+        assertEquals(0, resultado);
     }
 }

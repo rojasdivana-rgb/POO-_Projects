@@ -14,7 +14,7 @@ public class MoverCerosALaDerecha {
             }
         }
 
-        // Rellenar el resto con ceros
+        // Rellenar el resto con ceros.
         while (index < numeros.size()) {
             numeros.set(index++, 0);
         }
